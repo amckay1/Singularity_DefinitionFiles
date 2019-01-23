@@ -1,0 +1,27 @@
+Bootstrap: docker
+From: bethgelab/deeplearning:cuda9.0-cudnn7
+
+%post
+	apt-get update
+	# apt-get install python3? python3-pip?
+	apt-get -y install ffmpeg
+	pip install imageio
+
+	# install ffmpeg from imageio.
+	python -c "import imageio; imageio.plugins.ffmpeg.download()"
+	pip install --upgrade pip
+	pip install tensorflow-gpu==1.8
+	pip3 install deeplabcut
+	pip install ipywidgets
+	pip3 install ipywidgets
+	pip3 install seaborn
+
+%environment
+	export DLClight=True
+
+%runscript
+	#
+
+%labels
+	Author amckay1
+
